@@ -1,0 +1,15 @@
+Rebison
+
+I use this program to reverse engineer the bison parsers in
+linker_modtools. There are 4 languages in linker which use bison and
+flex:
+
+GSC (prefix "scr_")
+Simple preprocessor (prefix "sproc_")
+GSC symbols (prefix "scr_sym")
+HTML (prefix "html_")
+
+Dumptable
+
+dumptable.c will dump all of the bison tables from linker_modtools to C
+files, to be used to compile rebison.

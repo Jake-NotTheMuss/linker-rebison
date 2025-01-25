@@ -1,0 +1,10 @@
+extern "C" short const yytable [1928];
+extern "C" short const yycheck [1928];
+extern "C" short const yypact [385];
+extern "C" unsigned char const yydefact [385];
+extern "C" short const yypgoto [42];
+extern "C" short const yydefgoto [42];
+extern "C" unsigned char const yytranslate [375];
+extern "C" unsigned char const yyr1 [180];
+extern "C" unsigned char const yyr2 [180];
+extern "C" const char * const yytname [162];
