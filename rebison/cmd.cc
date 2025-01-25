@@ -20,8 +20,11 @@ static void dumprules (LexState *ls, const char *filename) {
   if (f == NULL)
     xerror("file '%s' cannot be opened", filename);
   for (i = 1; i < NUM_RULES; i++) {
-    if (yyr1[i] == S_YYACCEPT && ls->rules[i] != NULL)
-      printf("%%start %s\n\n", yytname[ls->rules[i][1]]);
+    if (yyr1[i] == S_YYACCEPT) {
+      if (ls->rules[i] != NULL)
+        printf("%%start %s\n\n", yytname[ls->rules[i][1]]);
+      break;
+    }
   }
   printf("%%%%\n\n");
   for (i = 1; i < NUM_RULES; i++) {
