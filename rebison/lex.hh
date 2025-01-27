@@ -23,8 +23,9 @@
   DEFCMD(stack,   "", \
         "List the contents of the parser state/symbol stack") \
   DEFCMD(state,   "(STATE=-1)", \
-         "Display information about a given parser state")\
-  DEFCMD(tokens,  "",         "List the valid tokens of the language")
+         "Display information about a given parser state") \
+  DEFCMD(tokens,  "",         "List the valid tokens of the language") \
+  DEFCMD(unbuilt, "",         "List all unbuilt rules")
 
 #define DEFCMD(e, _, __) CMD_##e,
 enum {

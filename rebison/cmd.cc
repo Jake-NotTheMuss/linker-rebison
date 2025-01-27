@@ -13,6 +13,9 @@
 
 extern void dumpstack (const Array<State> &array, int n);
 
+/* in printf, provide an integer I and a plural prefix if necessary */
+#define ARG_PL(i) (i), (i) == 1 ? "" : "s"
+
 /* dump all built grammar rules in yacc format */
 static void dumprules (LexState *ls, const char *filename) {
   int i, lastsym = -1;
@@ -22,11 +25,11 @@ static void dumprules (LexState *ls, const char *filename) {
   for (i = 1; i < NUM_RULES; i++) {
     if (yyr1[i] == S_YYACCEPT) {
       if (ls->rules[i] != NULL)
-        printf("%%start %s\n\n", yytname[ls->rules[i][1]]);
+        fprintf(f, "%%start %s\n\n", yytname[ls->rules[i][1]]);
       break;
     }
   }
-  printf("%%%%\n\n");
+  fprintf(f, "%%%%\n\n");
   for (i = 1; i < NUM_RULES; i++) {
     int sym = yyr1[i];
     int sep = sym != lastsym ? ' ' : '|';
@@ -40,7 +43,7 @@ static void dumprules (LexState *ls, const char *filename) {
     }
     if (ls->rules[i] == NULL)
       fprintf(f, "  %c /* rule %d unbuilt (%d symbol%s) */\n", sep, i,
-              yyr2[i], yyr2[i] == 1 ? "" : "s");
+              ARG_PL(yyr2[i]));
     /* if the rule is built, print the RHS symbols */
     else {
       int n;
@@ -68,6 +71,7 @@ void cmd_bison_f (LexState *ls) {
   dumprules(ls, name);
 }
 
+/* :echo(...) */
 void cmd_echo_f (LexState *ls) {
   if (ls->haveargs) {
     int i = 0;
@@ -83,6 +87,7 @@ void cmd_echo_f (LexState *ls) {
   printf("\n");
 }
 
+/* :exit(CODE=0) */
 void cmd_exit_f (LexState *ls) {
   int code = ls->haveargs ? getargint(ls) : 0;
   exit(code);
@@ -209,5 +214,19 @@ void cmd_tokens_f (LexState *ls) {
       name += sizeof(TOKEN_PREFIX)-1;
 #endif
     printf("\t%s\n", name);
+  }
+}
+
+/* :unbuilt(void) */
+void cmd_unbuilt_f (LexState *ls) {
+  int unbuilt [NUM_RULES] = {0};
+  int i, n = 0;
+  for (i = 1; i < NUM_RULES; i++)
+    if (ls->rules[i] == NULL) unbuilt[n++] = i;
+  printf("%d/%d rule%s built\n", (NUM_RULES - 1 - n), ARG_PL(NUM_RULES - 1));
+  if (n) {
+    printf("Unbulit rules:\n");
+    for (i = 0; i < n; i++)
+      printf("\tRule %d (%s)\n", unbuilt[i], yytname[yyr1[unbuilt[i]]]);
   }
 }
