@@ -4,7 +4,7 @@ CC= x86_64-w64-mingw32-g++
 src= rebison.cc lex.cc icmp.c xmalloc.c cmd.cc
 hdr= rebison.h lex.hh array.hh
 
-REBISON=scr/rebison scr_sym/rebison sproc/rebison
+REBISON=html/rebison scr/rebison scr_sym/rebison sproc/rebison
 
 scr_data=scr/symbol.h scr/tables.h scr/token.h scr/yycheck.c scr/yydefact.c \
 	scr/yydefgoto.c scr/yypact.c scr/yypgoto.c scr/yyr1.c scr/yyr2.c \
@@ -15,11 +15,10 @@ scr_sym_data=scr_sym/symbol.h scr_sym/tables.h scr_sym/token.h \
 	scr_sym/yypgoto.c scr_sym/yyr1.c scr_sym/yyr2.c scr_sym/yytable.c \
 	scr_sym/yytname.c scr_sym/yytranslate.c
 
-
-sproc_data=sproc/symbol.h sproc/tables.h sproc/token.h sproc/yycheck.c \
-	sproc/yydefact.c sproc/yydefgoto.c sproc/yypact.c sproc/yypgoto.c \
-	sproc/yyr1.c sproc/yyr2.c sproc/yytable.c sproc/yytname.c \
-	sproc/yytranslate.c
+html_data=html/symbol.h html/tables.h html/token.h html/yycheck.c \
+	html/yydefact.c html/yydefgoto.c html/yypact.c html/yypgoto.c \
+	html/yyr1.c html/yyr2.c html/yytable.c html/yytname.c \
+	html/yytranslate.c
 
 all: $(REBISON)
 

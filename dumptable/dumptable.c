@@ -64,16 +64,17 @@ static void FS_CreatePath (const char *OSPath) {
 
 static void dumptables (void) {
   const char *currdir = NULL;
-  dumptable_i("sproc", "yytable", 0xac4a68, 27, signed char, "d");
-  dumptable_i("sproc", "yycheck", 0xac4a88, 27, signed char, "d");
-  dumptable_i("sproc", "yypact", 0xac4a40, 32, signed char, "d");
-  dumptable_i("sproc", "yydefact", 0xac4a18, 32, signed char, "d");
-  dumptable_i("sproc", "yypgoto", 0xac4a60, 8, signed char, "d");
-  dumptable_i("sproc", "yydefgoto", 0xac4a38, 8, signed char, "d");
-  dumptable_i("sproc", "yytranslate",0xac47e0, 275, unsigned char, "d");
-  dumptable_i("sproc", "yyr1", 0xac49e8, 22, unsigned char, "d");
-  dumptable_i("sproc", "yyr2", 0xac4a00, 22, unsigned char, "d");
-  dumptable  ("sproc", "yytname", 0xac4900, 28, const char *, "\"%s\"");
+
+  dumptable_i("html", "yytable", 0xac67f0, 14, signed char, "d");
+  dumptable_i("html", "yycheck", 0xac6800, 14, signed char, "d");
+  dumptable_i("html", "yypact", 0xac67d0, 19, signed char, "d");
+  dumptable_i("html", "yydefact", 0xac67b0, 19, signed char, "d");
+  dumptable_i("html", "yypgoto", 0xac67e4, 5, signed char, "d");
+  dumptable_i("html", "yydefgoto", 0xac67c4, 5, signed char, "d");
+  dumptable_i("html", "yytranslate", 0xac65f0, 267, unsigned char, "d");
+  dumptable_i("html", "yyr1", 0xac6790, 13, unsigned char, "d");
+  dumptable_i("html", "yyr2", 0xac67a0, 13, unsigned char, "d");
+  dumptable  ("html", "yytname", 0xac6700, 17, const char *, "\"%s\"");
 
   dumptable_i("scr", "yytable", 0xaf5920, 1928, short, "hd");
   dumptable_i("scr", "yycheck", 0xaf6830, 1928, short, "hd");
@@ -96,6 +97,17 @@ static void dumptables (void) {
   dumptable_i("scr_sym", "yyr1", 0xafb478, 21, unsigned char, "d");
   dumptable_i("scr_sym", "yyr2", 0xafb490, 21, unsigned char, "d");
   dumptable  ("scr_sym", "yytname", 0xafb3a0, 26, const char *, "\"%s\"");
+
+  dumptable_i("sproc", "yytable", 0xac4a68, 27, signed char, "d");
+  dumptable_i("sproc", "yycheck", 0xac4a88, 27, signed char, "d");
+  dumptable_i("sproc", "yypact", 0xac4a40, 32, signed char, "d");
+  dumptable_i("sproc", "yydefact", 0xac4a18, 32, signed char, "d");
+  dumptable_i("sproc", "yypgoto", 0xac4a60, 8, signed char, "d");
+  dumptable_i("sproc", "yydefgoto", 0xac4a38, 8, signed char, "d");
+  dumptable_i("sproc", "yytranslate",0xac47e0, 275, unsigned char, "d");
+  dumptable_i("sproc", "yyr1", 0xac49e8, 22, unsigned char, "d");
+  dumptable_i("sproc", "yyr2", 0xac4a00, 22, unsigned char, "d");
+  dumptable  ("sproc", "yytname", 0xac4900, 28, const char *, "\"%s\"");
 }
 
 #ifdef __cplusplus
