@@ -49,8 +49,15 @@ static void dumprules (LexState *ls, const char *filename) {
       int n;
       fprintf(f, "  /* rule %d */\n  %c", i, sep);
       /* print rule RHS */
-      for (n = 0; n < ls->rules[i][0]; n++)
-        fprintf(f, " %s", yytname[ls->rules[i][n+1]]);
+      for (n = 0; n < ls->rules[i][0]; n++) {
+        int yysymbol = ls->rules[i][n+1];
+        const char *name = yytname[yysymbol];
+#ifdef TOKEN_PREFIX
+        if (strncmp(name, TOKEN_PREFIX, sizeof(TOKEN_PREFIX)-1) == 0)
+          name += sizeof(TOKEN_PREFIX)-1;
+#endif
+        fprintf(f, " %s", name);
+      }
       if (n == 0)
         fprintf(f, " %%empty");
       fprintf(f, "\n");
