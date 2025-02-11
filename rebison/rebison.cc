@@ -83,7 +83,8 @@ static int yylex (LexState *ls) {
   }
   printf("Enter the next token:\n");
   initline(ls);
-  checktoken(ls);
+  if (gettoken(ls) == NULL)
+    exit(0);
   do {
     /* check for command */
     if (*ls->token.s == ':') {
