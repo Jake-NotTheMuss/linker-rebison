@@ -77,7 +77,10 @@ char *initline (LexState *ls) {
     ls->line.push(c);
     if (c == 0) break;
   }
-  return ls->pos = &ls->line[0];
+  ls->pos = &ls->line[0];
+  if (ls->history_log != NULL)
+    fprintf(ls->history_log, "%s\n", ls->pos);
+  return ls->pos;
 }
 
 void lexinit (LexState *ls) {
@@ -106,7 +109,10 @@ void lexreset (LexState *ls) {
 void lexdestroy (LexState *ls) {
   if (ls->f != stdin)
     fclose(ls->f);
+  if (ls->history_log != NULL)
+    fclose(ls->history_log);
   ls->f = NULL;
+  ls->history_log = NULL;
   ls->pos = NULL;
   ls->line.destroy();
   ls->divert.destroy();
@@ -128,4 +134,13 @@ int getargint (LexState *ls) {
   if (*ls->token.s != ')')
     val = atoi(ls->token.s);
   return val;
+}
+
+const char *getargstring (LexState *ls) {
+  if (ls->haveargs) {
+    checktoken(ls);
+    if (*ls->token.s != ')' && *ls->token.s != ',')
+      return ls->token.s;
+  }
+  return NULL;
 }

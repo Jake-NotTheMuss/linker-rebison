@@ -18,6 +18,9 @@
   DEFCMD(exit,    "(CODE=0)", "Exit the program") \
   DEFCMD(fun,     "",         "Enter a function definition context") \
   DEFCMD(help,    "",         "Display information about commands") \
+  DEFCMD(record,  "(FILENAME=NULL)", \
+                              "Record all arguments to lexer to a file") \
+  DEFCMD(recordstop,"",       "Stop recording arguments to file") \
   DEFCMD(reset,   "",         "Reset the parser to its initial state") \
   DEFCMD(rules,   "",         "Display information about each grammar rule") \
   DEFCMD(stack,   "", \
@@ -46,6 +49,7 @@ typedef struct {
 
 typedef struct LexState {
   FILE *f;  /* input file */
+  FILE *history_log;  /* file for :record() command */
   Array<char> line;  /* current input line */
   char *pos;
   Buffer token, lookahead;
@@ -76,5 +80,6 @@ extern void lexreset (LexState *ls);
 extern void lexdestroy (LexState *ls);
 extern void skipargs (LexState *ls);
 extern int getargint (LexState *ls);
+extern const char *getargstring (LexState *ls);
 
 #endif /* lex_h */

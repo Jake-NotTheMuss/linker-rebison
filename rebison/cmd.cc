@@ -80,13 +80,7 @@ static void dumprules (LexState *ls, const char *filename) {
 
 /* :bison(FILENAME) */
 void cmd_bison_f (LexState *ls) {
-  char *name = NULL;
-  if (ls->haveargs) {
-    checktoken(ls);
-    if (*ls->token.s != ')' && *ls->token.s != ',')
-      name = ls->token.s;
-  }
-  dumprules(ls, name);
+  dumprules(ls, getargstring(ls));
 }
 
 /* :echo(...) */
@@ -129,6 +123,29 @@ void cmd_help_f (LexState *ls) {
 #define DEFCMD(e,str,str2) printf(fmt, #e str, str2);
   CMDTABLE
 #undef DEFCMD
+}
+
+/* :record(filename) */
+void cmd_record_f (LexState *ls) {
+  const char *name;
+  if (ls->history_log != NULL) {
+    fclose(ls->history_log);
+    ls->history_log = NULL;
+  }
+  name = getargstring(ls);
+  if (name == NULL)
+    name = "rebison.log";
+  ls->history_log = fopen(name, "w");
+  if (ls->history_log == NULL)
+    xerror("file '%s' cannot be opened", name);
+}
+
+/* :recordstop(void) */
+void cmd_recordstop_f (LexState *ls) {
+  if (ls->history_log != NULL) {
+    fclose(ls->history_log);
+    ls->history_log = NULL;
+  }
 }
 
 /* :rules(void) */
