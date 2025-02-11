@@ -3,6 +3,7 @@
 ** command handlers
 */
 
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,6 +16,11 @@ extern void dumpstack (const Array<State> &array, int n);
 
 /* in printf, provide an integer I and a plural prefix if necessary */
 #define ARG_PL(i) (i), (i) == 1 ? "" : "s"
+
+static int is_artifial (int yysym) {
+  const char *name = yytname[yysym];
+  return (!isalpha(*name) && *name != '_' && *name != '-');
+}
 
 /* dump all built grammar rules in yacc format */
 static void dumprules (LexState *ls, const char *filename) {
@@ -34,6 +40,7 @@ static void dumprules (LexState *ls, const char *filename) {
     int sym = yyr1[i];
     int sep = sym != lastsym ? ' ' : '|';
     const char *name = yytname[sym];
+    if (!ls->include_artificial && is_artifial(sym)) continue;
     if (sym == S_YYACCEPT) continue;
     /* print symbol name and ':' if this is the first rule in the group */
     if (sym != lastsym) {
@@ -53,9 +60,13 @@ static void dumprules (LexState *ls, const char *filename) {
         int yysymbol = ls->rules[i][n+1];
         const char *name = yytname[yysymbol];
 #ifdef TOKEN_PREFIX
+        if (yysymbol < YYNTOKENS)
         if (strncmp(name, TOKEN_PREFIX, sizeof(TOKEN_PREFIX)-1) == 0)
           name += sizeof(TOKEN_PREFIX)-1;
 #endif
+        if (!ls->include_artificial &&
+            yysymbol >= YYNTOKENS && is_artifial(yysymbol))
+          continue;
         fprintf(f, " %s", name);
       }
       if (n == 0)

@@ -220,8 +220,14 @@ static void yyparse (LexState *ls) {
 }
 
 int main (int argc, const char *argv []) {
+  int i;
   LexState ls = {0};
   ls.f = stdin;
+  ls.include_artificial = 1;
+  for (i = 1; i < argc; i++) {
+    if (icmp(argv[i], "-n") == 0)
+      ls.include_artificial = 0;
+  }
   lexinit(&ls);
   yyparse(&ls);
   lexdestroy(&ls);

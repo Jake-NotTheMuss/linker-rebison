@@ -54,6 +54,7 @@ typedef struct LexState {
   int divertpos;
   int yychar;
   int haveargs;  /* have arguments for the current command */
+  int include_artificial;
   Array<int> divert;  /* diversion array for buffering input tokens */
   Array<State> ssa;  /* state/symbol stack for yyparse */
   int *rules [NUM_RULES];
