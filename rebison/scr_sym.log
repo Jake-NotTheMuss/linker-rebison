@@ -1,0 +1,13 @@
+using filename
+namespace identifier
+function identifier left_curly right_curly
+var identifier
+class identifier colon identifier left_curly right_curly
+class identifier left_curly
+var identifier
+constructor left_curly right_curly
+destructor left_curly right_curly
+function identifier left_curly right_curly
+right_curly
+eof
+:bison(../scr_sym.y)

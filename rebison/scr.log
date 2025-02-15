@@ -1,0 +1,146 @@
+using filename semicolon
+using identifier semicolon
+using_animtree left_paren string right_paren semicolon
+namespace identifier semicolon
+precache left_paren string comma string right_paren semicolon
+precache left_paren string comma string comma string right_paren semicolon
+precache left_paren string comma string comma string comma string right_paren semicolon
+devblock_begin devblock_end
+class identifier left_curly right_curly
+class identifier colon identifier left_curly
+var identifier semicolon
+function identifier left_paren right_paren left_curly right_curly
+docblock constructor left_paren right_paren left_curly right_curly
+destructor left_paren right_paren left_curly right_curly
+right_curly
+function private autoexec identifier left_paren
+identifier comma bit_and identifier
+comma identifier equals integer
+comma ellipsis
+right_paren
+left_curly
+identifier double_colon identifier
+left_paren right_paren semicolon
+identifier left_paren right_paren semicolon
+left_bracket left_bracket identifier right_bracket right_bracket left_paren right_paren semicolon
+left_bracket left_bracket identifier right_bracket right_bracket arrow identifier left_paren right_paren semicolon
+thread identifier left_paren right_paren semicolon
+identifier identifier left_paren right_paren semicolon
+isdefined left_paren right_paren semicolon
+vector_scale left_paren right_paren semicolon
+gettime left_paren right_paren semicolon
+profilestart left_paren right_paren semicolon
+profilestart left_paren string right_paren semicolon
+:fun
+profilestart left_paren string right_paren semicolon
+profilestop left_paren right_paren semicolon
+new identifier left_paren right_paren semicolon
+identifier equals integer semicolon
+functionname_macro equals identifier semicolon
+bit_and identifier equals integer semicolon
+bit_and identifier double_colon identifier equals integer semicolon
+constant identifier equals integer semicolon
+return integer semicolon
+return semicolon
+identifier inc semicolon
+identifier dec semicolon
+identifier bit_or_equals integer semicolon
+identifier bit_xor_equals integer semicolon
+identifier bit_and_equals integer semicolon
+identifier shift_left_equals integer semicolon
+identifier shift_right_equals integer semicolon
+identifier plus_equals integer semicolon
+identifier minus_equals integer semicolon
+identifier multiply_equals integer semicolon
+identifier divide_equals integer semicolon
+identifier mod_equals integer semicolon
+wait integer semicolon
+realwait integer semicolon
+identifier waittill left_paren string comma identifier comma undefined right_paren semicolon
+identifier waittillmatch left_paren string comma string right_paren semicolon
+waittillframeend semicolon
+identifier notify left_paren right_paren semicolon
+:fun
+identifier notify left_paren string right_paren semicolon
+identifier endon left_paren string right_paren semicolon
+break semicolon
+continue semicolon
+left_curly right_curly
+if left_paren integer right_paren return semicolon
+if left_paren integer right_paren return semicolon else return semicolon
+while left_paren integer right_paren return semicolon
+do left_curly right_curly while left_paren integer right_paren semicolon
+for left_paren semicolon semicolon right_paren return semicolon
+for left_paren identifier equals integer semicolon integer semicolon identifier inc right_paren
+return semicolon
+foreach left_paren identifier in identifier right_paren
+foreach left_paren identifier comma identifier in identifier right_paren return semicolon
+switch left_paren identifier right_paren left_curly
+case integer colon default colon semicolon
+right_curly
+devblock_begin semicolon devblock_end
+assert left_paren identifier right_paren semicolon
+assertmsg left_paren identifier right_paren semicolon
+identifier left_paren
+left_paren identifier right_paren comma
+dollar integer comma
+dollar identifier comma
+integer comma
+float comma
+string comma
+istring comma
+hstring comma
+undefined comma
+false comma
+true comma
+self comma
+world comma
+classes comma
+level comma
+game comma
+anim comma
+left_bracket right_bracket comma
+mod identifier comma
+mod identifier double_colon identifier comma
+cur_animtree
+right_paren semicolon
+identifier equals identifier size_field semicolon
+identifier left_paren
+left_paren integer conditional integer colon integer right_paren comma
+identifier bool_or identifier comma
+identifier bool_and identifier comma
+identifier bit_or identifier comma
+identifier bit_xor identifier comma
+identifier bit_and identifier comma
+identifier equality identifier comma
+identifier inequality identifier comma
+identifier super_equality identifier comma
+identifier super_inequality identifier comma
+identifier less identifier comma
+identifier greater identifier comma
+identifier less_equal identifier comma
+identifier greater_equal identifier comma
+identifier shift_left identifier comma
+identifier shift_right identifier comma
+identifier plus identifier comma
+identifier minus identifier comma
+identifier multiply identifier comma
+identifier divide identifier comma
+identifier mod identifier comma
+not identifier comma
+tilda identifier comma
+minus identifier
+right_paren semicolon
+function identifier left_paren ellipsis right_paren left_curly right_curly
+right_curly
+function identifier left_paren ellipsis right_paren left_curly right_curly
+function identifier left_paren identifier right_paren left_curly right_curly
+function identifier left_paren bit_and identifier right_paren left_curly right_curly
+identifier equals identifier left_paren right_paren semicolon
+:fun
+identifier equals identifier left_paren right_paren semicolon
+identifier equals identifier period identifier semicolon
+identifier equals identifier left_bracket integer right_bracket semicolon
+right_curly
+eof
+:bison(../scr.y)

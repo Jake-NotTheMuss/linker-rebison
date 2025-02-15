@@ -1,0 +1,13 @@
+if identifier newline eof
+elif integer equal string newline eof
+if string greater string newline eof
+if string less string newline eof
+if string greater_equal string newline eof
+if string less_equal string newline eof
+if not string newline eof
+if string not_equal string newline eof
+if string notequal string newline eof
+if string equal string or string newline eof
+if string and string newline eof
+if lparen string rparen newline eof
+:bison(../sproc.y)

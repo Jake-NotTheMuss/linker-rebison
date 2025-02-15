@@ -1,0 +1,7 @@
+textblock
+less identifier greater
+less identifier identifier equals string identifier equals identifier identifier greater
+less slash identifier greater
+less identifier slash greater
+eof
+:bison(../html.y)
