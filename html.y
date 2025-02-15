@@ -34,3 +34,4 @@ attributes:
   | attributes IDENTIFIER
   /* rule 12 */
   | %empty
+  ;

@@ -494,3 +494,4 @@ filename:
     IDENTIFIER
   /* rule 179 */
   | FILENAME
+  ;

@@ -61,3 +61,4 @@ operator:
 unary_operator:
   /* rule 21 */
     NOT
+  ;

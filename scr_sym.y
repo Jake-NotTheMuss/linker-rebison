@@ -65,3 +65,4 @@ class_list:
 func_decl:
   /* rule 20 */
     FUNCTION IDENTIFIER LEFT_CURLY RIGHT_CURLY
+  ;

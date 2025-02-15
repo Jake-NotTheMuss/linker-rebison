@@ -75,6 +75,7 @@ static void dumprules (LexState *ls, const char *filename) {
     }
     lastsym = sym;
   }
+  if (lastsym != -1) fprintf(f, "  ;\n");
   if (filename) fclose(f);
 }
 
